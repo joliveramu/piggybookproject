@@ -111,6 +111,7 @@ Partial Class MainForm
 		'panel1
 		'
 		Me.panel1.BackColor = System.Drawing.Color.OldLace
+		Me.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.panel1.Controls.Add(Me.label4)
 		Me.panel1.Controls.Add(Me.button1)
 		Me.panel1.Controls.Add(Me.txtPassword)

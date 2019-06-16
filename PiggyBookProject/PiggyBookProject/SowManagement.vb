@@ -54,61 +54,67 @@ Public Partial Class SowManagement
 		loadBreed()
 		loadSource()
 		loadStatus()
+		displayLatestCount()
 	End Sub
 	
 	Sub DataGridView1CellClick(sender As Object, e As DataGridViewCellEventArgs)
-		If cmbSource.SelectedIndex = -1 Or cmbBreed.SelectedIndex = -1 Then
-			MessageBox.Show("Please fill up the blank fields!")	
-		Else
+		'If cmbSource.SelectedIndex = -1 Or cmbBreed.SelectedIndex = -1 Then
+		'	MessageBox.Show("Please fill up the blank fields!")	
+		'Else
 			Try
 			lblSowID.Text = DataGridView1.Item(0, DataGridView1.CurrentRow.Index).Value.ToString()
 			textBox1.Text = DataGridView1.Item(1, DataGridView1.CurrentRow.Index).Value.ToString()
 			cmbBreed.Text = DataGridView1.Item(2, DataGridView1.CurrentRow.Index).Value.ToString()
 			dTPBirth.Text = DataGridView1.Item(3, DataGridView1.CurrentRow.Index).Value.ToString()
 			dTPAcquired.Text = DataGridView1.Item(4, DataGridView1.CurrentRow.Index).Value.ToString()
-			textBox5.Text = DataGridView1.Item(6, DataGridView1.CurrentRow.Index).Value.ToString()
+			txtKilos.Text = DataGridView1.Item(5, DataGridView1.CurrentRow.Index).Value.ToString()
+			cmbType.Text = DataGridView1.Item(6, DataGridView1.CurrentRow.Index).Value.ToString()
 			cmbSource.Text = DataGridView1.Item(7, DataGridView1.CurrentRow.Index).Value.ToString()
 			cmbStatus.Text = DataGridView1.Item(8, DataGridView1.CurrentRow.Index).Value.ToString()
-			dTPCulled.Text = DataGridView1.Item(9, DataGridView1.CurrentRow.Index).Value.ToString()
+			'dTPCulled.Text = DataGridView1.Item(9, DataGridView1.CurrentRow.Index).Value.ToString()
 			textBox9.Text = DataGridView1.Item(10, DataGridView1.CurrentRow.Index).Value.ToString()
-			textBox10.Text = DataGridView1.Item(11, DataGridView1.CurrentRow.Index).Value.ToString()
+			txtMother.Text = DataGridView1.Item(11, DataGridView1.CurrentRow.Index).Value.ToString()
+			txtFather.Text = DataGridView1.Item(12, DataGridView1.CurrentRow.Index).Value.ToString()
+			textBox10.Text = DataGridView1.Item(13, DataGridView1.CurrentRow.Index).Value.ToString()
 		Catch ex As Exception
 			MessageBox.Show(ex.Message)
 		End Try
-		End If
+		'End If
 		
 	End Sub
 	
 	Sub BtnAddClick(sender As Object, e As EventArgs)
-		If cmbSource.SelectedIndex = -1 Or cmbBreed.SelectedIndex = -1 Then
+		If cmbSource.SelectedIndex = -1 Or cmbBreed.SelectedIndex = -1 Or cmbType.SelectedIndex = -1 Then
 			MessageBox.Show("Please fill up the blank fields!")	
 		Else
 			Try
 			db.connection.Open()
-			db.query = "INSERT INTO sowlist (alyas,breed,birthdate,dateacquired,type,source,status,dateculled,owner,remarks) values "&
-				"(@alias,@breed,@birth_date,@date_acquired,@type,@source,@status,@date_culled,@owner,@remarks)"
+			db.query = "INSERT INTO sowlist (alyas,breed,birthdate,dateacquired,type,source,status,kilo_acquired,owner,remarks,mother,father) values "&
+				"(@alias,@breed,@birth_date,@date_acquired,@type,@source,@status,@kilos,@owner,@remarks,@mther,@fther)"
 			db.command = New OleDbCommand(db.query,db.connection)	
 			db.command.Parameters.AddWithValue("@alias",textBox1.Text)
 			db.command.Parameters.AddWithValue("@breed", cmbBreed.Text)
 			db.command.Parameters.AddWithValue("@birth_date",dTPBirth.Text)
 			db.command.Parameters.AddWithValue("@date_acquired",dTPAcquired.Text)
-			db.command.Parameters.AddWithValue("@type",textBox5.Text)
+			db.command.Parameters.AddWithValue("@type",cmbType.Text)
 			db.command.Parameters.AddWithValue("@source",cmbSource.Text)
 			db.command.Parameters.AddWithValue("@status",cmbStatus.Text)
-			db.command.Parameters.AddWithValue("@dateculled", dTPCulled.Text)
+			db.command.Parameters.AddWithValue("@kilos", txtKilos.Text)
 			db.command.Parameters.AddWithValue("@owner",textBox9.Text)
 			db.command.Parameters.AddWithValue("@remarks",textBox10.Text)
+			db.command.Parameters.AddWithValue("@mther",txtMother.Text)
+			db.command.Parameters.AddWithValue("@fther",txtFather.Text)
 			db.command.ExecuteNonQuery()
 			MessageBox.Show("Data Added!")
 			db.connection.Close()
+			clearFields()
 			loadData()
+			displayLatestCount()
 		Catch ex As Exception
 			MessageBox.Show(ex.Message)
 			db.connection.Close()
 		End Try
 		End If
-		
-		
 	End Sub
 	
 	Sub BtnDeleteClick(sender As Object, e As EventArgs)	
@@ -192,23 +198,28 @@ Public Partial Class SowManagement
 			db.connection.Open()
 			db.query = "update sowlist set alyas = @alias, breed = @breed, birthdate = @birth_date, " & 
 				"dateacquired = @date_acquired, type = @type, source = @source, status = @status,"&
-				"dateculled = @date_culled, owner = @owner, remarks = @remarks where pigcode = @id;"
+				"kilo_acquired = @kilos, owner = @owner, remarks = @remarks, mother = @mother," &
+			   " father = @father where pigcode = @id;"
 			db.command = New OleDbCommand(db.query,db.connection)	
 			db.command.Parameters.AddWithValue("@alias",textBox1.Text)
 			db.command.Parameters.AddWithValue("@breed",cmbBreed.Text)
 			db.command.Parameters.AddWithValue("@birth_date",dTPBirth.Text)
 			db.command.Parameters.AddWithValue("@date_acquired",dTPAcquired.Text)
-			db.command.Parameters.AddWithValue("@type",textBox5.Text)
+			db.command.Parameters.AddWithValue("@type",cmbType.Text)
 			db.command.Parameters.AddWithValue("@source",cmbSource.Text)
 			db.command.Parameters.AddWithValue("@status",cmbStatus.Text)
-			db.command.Parameters.AddWithValue("@date_culled",dTPCulled.Text)
+			db.command.Parameters.AddWithValue("@kilos", txtKilos.Text)
 			db.command.Parameters.AddWithValue("@owner",textBox9.Text)
 			db.command.Parameters.AddWithValue("@remarks",textBox10.Text)
+			db.command.Parameters.AddWithValue("@",txtMother.Text)
+			db.command.Parameters.AddWithValue("@father",txtFather.Text)			
 			db.command.Parameters.AddWithValue("@id",lblSowID.Text)
 			db.command.ExecuteNonQuery()
 			MessageBox.Show("Data Updated!")
+			clearFields()
 			db.connection.Close()
 			loadData()
+			displayLatestCount()
 		Catch ex As Exception
 			MessageBox.Show(ex.Message)
 			db.connection.Close()
@@ -248,5 +259,51 @@ Public Partial Class SowManagement
 			MessageBox.Show(ex.Message)
 			db.connection.Close()
 		End Try
+	End Sub
+	
+	Sub displayLatestCount()
+		Try
+			db.connection.Open()
+			db.query = "select count(*) + 1 from sowlist"
+			db.command = New OleDbCommand(db.query, db.connection)
+			
+			lblSowID.Text 	= db.command.ExecuteScalar.ToString()
+			db.connection.Close()
+		Catch ex As Exception
+			MessageBox.Show(ex.Message)
+			db.connection.Close()
+		End Try
+	End Sub
+	
+	Sub CmbTypeKeyPress(sender As Object, e As KeyPressEventArgs)
+		e.Handled = True
+	End Sub
+	
+	Sub CmbBreedKeyPress(sender As Object, e As KeyPressEventArgs)
+		e.Handled = True
+	End Sub
+	
+	Sub CmbSourceKeyPress(sender As Object, e As KeyPressEventArgs)
+		e.Handled = True
+	End Sub
+	
+	Sub CmbStatusKeyPress(sender As Object, e As KeyPressEventArgs)
+		e.Handled = True
+	End Sub
+	
+	Sub clearFields()
+		textBox1.Text = Nothing
+		txtFather.Text = Nothing
+		txtMother.Text = Nothing
+		txtKilos.Text = Nothing
+		textBox9.Text = Nothing
+		textBox10.Text = Nothing
+		textBox11.Text = Nothing
+		cmbBreed.SelectedIndex = -1
+		cmbSource.SelectedIndex = -1
+		cmbStatus.SelectedIndex = -1
+		cmbType.SelectedIndex = -1
+		dTPAcquired.Value = DateTime.Now.ToString("yyyy/MM/dd")
+		dTPBirth.Value = DateTime.Now.ToString("yyyy/MM/dd")
 	End Sub
 End Class

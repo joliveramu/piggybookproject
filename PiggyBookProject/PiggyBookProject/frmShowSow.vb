@@ -51,13 +51,17 @@ Public Partial Class frmShowSow
 		Dim showSowHistory As New SowHistory
 		db.connection.Close()
 		Me.Hide()
+		showSowHistory.lblCurrentUser.Text = Me.lblCurrentUser.Text
 		showSowHistory.Show()
 	End Sub
 	
 	
 	
 	Sub Button1Click(sender As Object, e As EventArgs)
-		Try
+		If cmbNatai.SelectedIndex = -1 Or cmbBoarID.SelectedIndex = -1 Then
+			MessageBox.Show("Please fill up the blank fields!")	
+		Else
+			Try
 				db.connection.Open()
 				db.query = "INSERT INTO sowhistory(pigcode,datecaste,born,liveborn,mummified,stillborn,"
 				db.query += "idboar,pigletbirthdate,deaths,datewean,natai)"
@@ -78,24 +82,18 @@ Public Partial Class frmShowSow
 				db.command.Parameters.AddWithValue("@datewean",Me.dtpWeanDate.Text)
 				db.command.Parameters.AddWithValue("@natai",Me.cmbNatai.Text)
 				
-				Me.cmbBoarID.SelectedIndex = 0
-				Me.cmbNatai.SelectedIndex = 0
-				Me.txtBorn.Clear()
-				Me.txtDeath.Clear()
-				Me.txtMummified.Clear()
-				Me.txtLiveBorn.Clear()
-				Me.txtStillBorn.Clear()
-				
-				
 				db.command.ExecuteNonQuery()
 				MessageBox.Show("New record added for Sow ID "+Me.textID.Text)
 				
 				db.connection.Close()
 				loadData()
+				clearFields()
 		Catch ex As Exception
 			MessageBox.Show(ex.Message)
 			db.connection.Close()
 		End Try
+		End If
+		
 	End Sub
 	
 	Sub loadBoarId()
@@ -115,5 +113,18 @@ Public Partial Class frmShowSow
 			MessageBox.Show(ex.Message)
 			db.connection.Close()
 		End Try
+	End Sub
+	
+		Sub clearFields()
+			cmbNatai.SelectedIndex = -1
+			cmbBoarID.SelectedIndex = - 1
+			txtBorn.Text = Nothing
+			txtDeath.Text = Nothing
+			txtLiveBorn.Text = Nothing
+			txtMummified.Text = Nothing
+			txtStillBorn.Text = Nothing
+			dtpDateCaste.Value = DateTime.Now.ToString("yyyy/MM/dd")
+			dtpPigDOB.Value = DateTime.Now.ToString("yyyy/MM/dd")
+			dtpWeanDate.Value = DateTime.Now.ToString("yyyy/MM/dd")
 	End Sub
 End Class

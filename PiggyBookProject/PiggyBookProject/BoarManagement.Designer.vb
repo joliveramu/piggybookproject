@@ -41,6 +41,9 @@ Partial Class BoarManagement
 		Me.panel1 = New System.Windows.Forms.Panel()
 		Me.label2 = New System.Windows.Forms.Label()
 		Me.panel2 = New System.Windows.Forms.Panel()
+		Me.cmbSource = New System.Windows.Forms.ComboBox()
+		Me.cmbBreed = New System.Windows.Forms.ComboBox()
+		Me.dTPBoarBirth = New System.Windows.Forms.DateTimePicker()
 		Me.textBox6 = New System.Windows.Forms.TextBox()
 		Me.label5 = New System.Windows.Forms.Label()
 		Me.btnUpdate = New System.Windows.Forms.Button()
@@ -62,9 +65,10 @@ Partial Class BoarManagement
 		Me.printDialog1 = New System.Windows.Forms.PrintDialog()
 		Me.printDocument1 = New System.Drawing.Printing.PrintDocument()
 		Me.printPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
-		Me.dTPBoarBirth = New System.Windows.Forms.DateTimePicker()
-		Me.cmbBreed = New System.Windows.Forms.ComboBox()
-		Me.cmbSource = New System.Windows.Forms.ComboBox()
+		Me.txtMother = New System.Windows.Forms.TextBox()
+		Me.label10 = New System.Windows.Forms.Label()
+		Me.txtFather = New System.Windows.Forms.TextBox()
+		Me.label11 = New System.Windows.Forms.Label()
 		CType(Me.pictureBox1,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.panel1.SuspendLayout
 		Me.panel2.SuspendLayout
@@ -138,36 +142,64 @@ Partial Class BoarManagement
 		'
 		Me.panel2.BackColor = System.Drawing.Color.OldLace
 		Me.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.panel2.Controls.Add(Me.txtFather)
+		Me.panel2.Controls.Add(Me.txtMother)
 		Me.panel2.Controls.Add(Me.cmbSource)
 		Me.panel2.Controls.Add(Me.cmbBreed)
 		Me.panel2.Controls.Add(Me.dTPBoarBirth)
 		Me.panel2.Controls.Add(Me.textBox6)
-		Me.panel2.Controls.Add(Me.label5)
 		Me.panel2.Controls.Add(Me.btnUpdate)
 		Me.panel2.Controls.Add(Me.btnDelete)
 		Me.panel2.Controls.Add(Me.btnAdd)
-		Me.panel2.Controls.Add(Me.label8)
-		Me.panel2.Controls.Add(Me.label7)
 		Me.panel2.Controls.Add(Me.label6)
 		Me.panel2.Controls.Add(Me.lblBoarID)
 		Me.panel2.Controls.Add(Me.label3)
 		Me.panel2.Controls.Add(Me.textBox1)
+		Me.panel2.Controls.Add(Me.label10)
+		Me.panel2.Controls.Add(Me.label7)
+		Me.panel2.Controls.Add(Me.label8)
+		Me.panel2.Controls.Add(Me.label5)
 		Me.panel2.Controls.Add(Me.label9)
+		Me.panel2.Controls.Add(Me.label11)
 		Me.panel2.Location = New System.Drawing.Point(7, 106)
 		Me.panel2.Name = "panel2"
-		Me.panel2.Size = New System.Drawing.Size(200, 370)
+		Me.panel2.Size = New System.Drawing.Size(200, 421)
 		Me.panel2.TabIndex = 11
+		'
+		'cmbSource
+		'
+		Me.cmbSource.FormattingEnabled = true
+		Me.cmbSource.Location = New System.Drawing.Point(4, 212)
+		Me.cmbSource.Name = "cmbSource"
+		Me.cmbSource.Size = New System.Drawing.Size(189, 21)
+		Me.cmbSource.TabIndex = 19
+		'
+		'cmbBreed
+		'
+		Me.cmbBreed.FormattingEnabled = true
+		Me.cmbBreed.Location = New System.Drawing.Point(4, 170)
+		Me.cmbBreed.Name = "cmbBreed"
+		Me.cmbBreed.Size = New System.Drawing.Size(189, 21)
+		Me.cmbBreed.TabIndex = 18
+		'
+		'dTPBoarBirth
+		'
+		Me.dTPBoarBirth.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+		Me.dTPBoarBirth.Location = New System.Drawing.Point(4, 130)
+		Me.dTPBoarBirth.Name = "dTPBoarBirth"
+		Me.dTPBoarBirth.Size = New System.Drawing.Size(191, 20)
+		Me.dTPBoarBirth.TabIndex = 17
 		'
 		'textBox6
 		'
-		Me.textBox6.Location = New System.Drawing.Point(2, 273)
+		Me.textBox6.Location = New System.Drawing.Point(2, 254)
 		Me.textBox6.Name = "textBox6"
 		Me.textBox6.Size = New System.Drawing.Size(191, 20)
 		Me.textBox6.TabIndex = 15
 		'
 		'label5
 		'
-		Me.label5.Location = New System.Drawing.Point(47, 207)
+		Me.label5.Location = New System.Drawing.Point(47, 188)
 		Me.label5.Name = "label5"
 		Me.label5.Size = New System.Drawing.Size(100, 23)
 		Me.label5.TabIndex = 14
@@ -176,7 +208,7 @@ Partial Class BoarManagement
 		'
 		'btnUpdate
 		'
-		Me.btnUpdate.Location = New System.Drawing.Point(54, 335)
+		Me.btnUpdate.Location = New System.Drawing.Point(54, 388)
 		Me.btnUpdate.Name = "btnUpdate"
 		Me.btnUpdate.Size = New System.Drawing.Size(93, 29)
 		Me.btnUpdate.TabIndex = 12
@@ -186,7 +218,7 @@ Partial Class BoarManagement
 		'
 		'btnDelete
 		'
-		Me.btnDelete.Location = New System.Drawing.Point(100, 302)
+		Me.btnDelete.Location = New System.Drawing.Point(100, 355)
 		Me.btnDelete.Name = "btnDelete"
 		Me.btnDelete.Size = New System.Drawing.Size(93, 29)
 		Me.btnDelete.TabIndex = 11
@@ -196,7 +228,7 @@ Partial Class BoarManagement
 		'
 		'btnAdd
 		'
-		Me.btnAdd.Location = New System.Drawing.Point(4, 302)
+		Me.btnAdd.Location = New System.Drawing.Point(4, 355)
 		Me.btnAdd.Name = "btnAdd"
 		Me.btnAdd.Size = New System.Drawing.Size(93, 29)
 		Me.btnAdd.TabIndex = 10
@@ -206,7 +238,7 @@ Partial Class BoarManagement
 		'
 		'label8
 		'
-		Me.label8.Location = New System.Drawing.Point(47, 159)
+		Me.label8.Location = New System.Drawing.Point(47, 148)
 		Me.label8.Name = "label8"
 		Me.label8.Size = New System.Drawing.Size(100, 23)
 		Me.label8.TabIndex = 9
@@ -215,7 +247,7 @@ Partial Class BoarManagement
 		'
 		'label7
 		'
-		Me.label7.Location = New System.Drawing.Point(47, 114)
+		Me.label7.Location = New System.Drawing.Point(47, 108)
 		Me.label7.Name = "label7"
 		Me.label7.Size = New System.Drawing.Size(100, 23)
 		Me.label7.TabIndex = 7
@@ -258,7 +290,7 @@ Partial Class BoarManagement
 		'
 		'label9
 		'
-		Me.label9.Location = New System.Drawing.Point(45, 252)
+		Me.label9.Location = New System.Drawing.Point(45, 231)
 		Me.label9.Name = "label9"
 		Me.label9.Size = New System.Drawing.Size(100, 23)
 		Me.label9.TabIndex = 16
@@ -286,7 +318,7 @@ Partial Class BoarManagement
 		Me.panel3.Controls.Add(Me.dataGridView1)
 		Me.panel3.Location = New System.Drawing.Point(229, 106)
 		Me.panel3.Name = "panel3"
-		Me.panel3.Size = New System.Drawing.Size(619, 370)
+		Me.panel3.Size = New System.Drawing.Size(619, 421)
 		Me.panel3.TabIndex = 12
 		'
 		'button2
@@ -325,7 +357,7 @@ Partial Class BoarManagement
 		Me.dataGridView1.Location = New System.Drawing.Point(4, 46)
 		Me.dataGridView1.Name = "dataGridView1"
 		Me.dataGridView1.ReadOnly = true
-		Me.dataGridView1.Size = New System.Drawing.Size(610, 319)
+		Me.dataGridView1.Size = New System.Drawing.Size(610, 370)
 		Me.dataGridView1.TabIndex = 0
 		AddHandler Me.dataGridView1.CellClick, AddressOf Me.DataGridView1CellClick
 		'
@@ -347,36 +379,44 @@ Partial Class BoarManagement
 		Me.printPreviewDialog1.Name = "printPreviewDialog1"
 		Me.printPreviewDialog1.Visible = false
 		'
-		'dTPBoarBirth
+		'txtMother
 		'
-		Me.dTPBoarBirth.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-		Me.dTPBoarBirth.Location = New System.Drawing.Point(4, 136)
-		Me.dTPBoarBirth.Name = "dTPBoarBirth"
-		Me.dTPBoarBirth.Size = New System.Drawing.Size(191, 20)
-		Me.dTPBoarBirth.TabIndex = 17
+		Me.txtMother.Location = New System.Drawing.Point(5, 292)
+		Me.txtMother.Name = "txtMother"
+		Me.txtMother.Size = New System.Drawing.Size(191, 20)
+		Me.txtMother.TabIndex = 20
 		'
-		'cmbBreed
+		'label10
 		'
-		Me.cmbBreed.FormattingEnabled = true
-		Me.cmbBreed.Location = New System.Drawing.Point(4, 183)
-		Me.cmbBreed.Name = "cmbBreed"
-		Me.cmbBreed.Size = New System.Drawing.Size(189, 21)
-		Me.cmbBreed.TabIndex = 18
+		Me.label10.Location = New System.Drawing.Point(48, 271)
+		Me.label10.Name = "label10"
+		Me.label10.Size = New System.Drawing.Size(100, 23)
+		Me.label10.TabIndex = 21
+		Me.label10.Text = "Mother"
+		Me.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
-		'cmbSource
+		'txtFather
 		'
-		Me.cmbSource.FormattingEnabled = true
-		Me.cmbSource.Location = New System.Drawing.Point(4, 228)
-		Me.cmbSource.Name = "cmbSource"
-		Me.cmbSource.Size = New System.Drawing.Size(189, 21)
-		Me.cmbSource.TabIndex = 19
+		Me.txtFather.Location = New System.Drawing.Point(4, 330)
+		Me.txtFather.Name = "txtFather"
+		Me.txtFather.Size = New System.Drawing.Size(191, 20)
+		Me.txtFather.TabIndex = 22
+		'
+		'label11
+		'
+		Me.label11.Location = New System.Drawing.Point(47, 309)
+		Me.label11.Name = "label11"
+		Me.label11.Size = New System.Drawing.Size(100, 23)
+		Me.label11.TabIndex = 23
+		Me.label11.Text = "Father"
+		Me.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'BoarManagement
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.SystemColors.ButtonHighlight
-		Me.ClientSize = New System.Drawing.Size(860, 488)
+		Me.ClientSize = New System.Drawing.Size(860, 539)
 		Me.Controls.Add(Me.panel3)
 		Me.Controls.Add(Me.panel2)
 		Me.Controls.Add(Me.pictureBox1)
@@ -395,6 +435,10 @@ Partial Class BoarManagement
 		CType(Me.dataGridView1,System.ComponentModel.ISupportInitialize).EndInit
 		Me.ResumeLayout(false)
 	End Sub
+	Private label11 As System.Windows.Forms.Label
+	Private txtFather As System.Windows.Forms.TextBox
+	Private label10 As System.Windows.Forms.Label
+	Private txtMother As System.Windows.Forms.TextBox
 	Private cmbSource As System.Windows.Forms.ComboBox
 	Private cmbBreed As System.Windows.Forms.ComboBox
 	Private dTPBoarBirth As System.Windows.Forms.DateTimePicker

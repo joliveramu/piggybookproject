@@ -41,6 +41,7 @@ Public Partial Class BoarManagement
 		loadData()
 		loadBreed()
 		loadSource()
+		displayLatestCount()
 	End Sub
 	
 	Sub loadData()
@@ -108,6 +109,8 @@ Public Partial Class BoarManagement
 			cmbBreed.Text = DataGridView1.Item(3, DataGridView1.CurrentRow.Index).Value.ToString()
 			cmbSource.Text = DataGridView1.Item(4, DataGridView1.CurrentRow.Index).Value.ToString()
 			textBox6.Text = DataGridView1.Item(5, DataGridView1.CurrentRow.Index).Value.ToString()
+			txtMother.Text = DataGridView1.Item(6, DataGridView1.CurrentRow.Index).Value.ToString()
+			txtFather.Text = DataGridView1.Item(7, DataGridView1.CurrentRow.Index).Value.ToString()
 		Catch ex As Exception
 			MessageBox.Show(ex.Message)
 		End Try
@@ -119,17 +122,22 @@ Public Partial Class BoarManagement
 		Else
 			Try
 			db.connection.Open()
-			db.query = "insert into boar (alyas,birthdate,breed,source,remarks) values (@alias,@bday,@breed,@source,@remarks);"
+			db.query = "insert into boar (alyas,birthdate,breed,source,remarks,mother,father) "
+			db.query += " values (@alias,@bday,@breed,@source,@remarks,@mther,@fther);"
 			db.command = New OleDbCommand(db.query,db.connection)
 			db.command.Parameters.AddWithValue("@alias",textBox1.Text)
 			db.command.Parameters.AddWithValue("@bday",dTPBoarBirth.Text)
 			db.command.Parameters.AddWithValue("@breed",cmbBreed.Text)
 			db.command.Parameters.AddWithValue("@source",cmbSource.Text)
 			db.command.Parameters.AddWithValue("@remarks",textBox6.Text)
+			db.command.Parameters.AddWithValue("@mther",txtMother.Text)
+			db.command.Parameters.AddWithValue("@fther",txtFather.Text)
 			db.command.ExecuteNonQuery()
 			MessageBox.Show("Data Added!")
 			db.connection.Close()
 			loadData()
+			displayLatestCount()
+			clearFields()
 		Catch ex As Exception
 			MessageBox.Show(ex.Message)
 			db.connection.Close()
@@ -172,28 +180,27 @@ Public Partial Class BoarManagement
 			Try
 			db.connection.Open()
 			db.query = "update boar set alyas = @alias, birthdate = @bday, breed = @breed," & 
-				"source = @source, remarks = @remarks where idboar = @id;"
+				"source = @source, remarks = @remarks, mother = @mther, father = @fther where idboar = @id;"
 			db.command = New OleDbCommand(db.query,db.connection)
 			db.command.Parameters.AddWithValue("@alias",textBox1.Text)
 			db.command.Parameters.AddWithValue("@bday",dTPBoarBirth.Text)
 			db.command.Parameters.AddWithValue("@breed",cmbBreed.Text)
 			db.command.Parameters.AddWithValue("@source",cmbSource.Text)
 			db.command.Parameters.AddWithValue("@remarks",textBox6.Text)
+			db.command.Parameters.AddWithValue("@mther",txtMother.Text)
+			db.command.Parameters.AddWithValue("@fther",txtFather.Text)
 			db.command.Parameters.AddWithValue("@id",lblBoarID.Text)
 			db.command.ExecuteNonQuery()
 			MessageBox.Show("Data Updated!")
 			db.connection.Close()
 			loadData()
+			displayLatestCount()
+			clearFields()
 		Catch ex As Exception
 			MessageBox.Show(ex.Message)
 			db.connection.Close()
 		End Try
-			
-			
 		End If
-		
-		
-		
 	End Sub
 	
 	Sub BtnSearchClick(sender As Object, e As EventArgs)
@@ -209,6 +216,7 @@ Public Partial Class BoarManagement
 				dataGridView1.DataSource = dt
 			End If
 			db.connection.Close()
+			clearFields()
 		Catch ex As Exception
 			MessageBox.Show(ex.Message)
 			
@@ -220,6 +228,7 @@ Public Partial Class BoarManagement
 	
 	Sub Button1Click(sender As Object, e As EventArgs)
 		loadData()
+		clearFields()
 	End Sub
 	
 	
@@ -257,5 +266,28 @@ Public Partial Class BoarManagement
 		'	e.Graphics.DrawImage(dataGridViewImage, 50, 50)
 	'	e.Graphics.DrawImage(dataGridViewImage, 100, 100)
 	''End Working
+	End Sub
+	
+	Sub displayLatestCount()
+		Try
+			db.connection.Open()
+			db.query = "select count(*) + 1 from boar"
+			db.command = New OleDbCommand(db.query, db.connection)
+			
+			lblBoarID.Text 	= db.command.ExecuteScalar.ToString()
+			db.connection.Close()
+		Catch ex As Exception
+			MessageBox.Show(ex.Message)
+			db.connection.Close()
+		End Try
+	End Sub
+	Sub clearFields()
+		textBox1.Text = Nothing
+		textBox6.Text = Nothing
+		txtMother.Text = Nothing
+		txtFather.Text = Nothing
+		dTPBoarBirth.Value = DateTime.Now.ToString("yyyy/MM/dd")
+		cmbSource.SelectedIndex = -1
+		cmbBreed.SelectedIndex = -1
 	End Sub
 End Class

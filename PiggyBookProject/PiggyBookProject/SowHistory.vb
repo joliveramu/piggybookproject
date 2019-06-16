@@ -72,6 +72,7 @@ Public Partial Class SowHistory
 			'textBox8.Text = DataGridView1.Item(8, DataGridView1.CurrentRow.Index).Value
 			Dim showSow As New frmShowSow
 			showSow.textID.Text = Convert.ToInt32(DataGridView1.Item(0, DataGridView1.CurrentRow.Index).Value)
+			showSow.lblCurrentUser.Text = Me.lblCurrentUser.Text
 			showSow.Show()
 			Me.Hide()
 			db.connection.Close()

@@ -45,9 +45,12 @@ Partial Class SowManagement
 		Me.label15 = New System.Windows.Forms.Label()
 		Me.btnAdd = New System.Windows.Forms.Button()
 		Me.panel2 = New System.Windows.Forms.Panel()
+		Me.cmbType = New System.Windows.Forms.ComboBox()
+		Me.txtKilos = New System.Windows.Forms.TextBox()
+		Me.txtMother = New System.Windows.Forms.TextBox()
+		Me.label16 = New System.Windows.Forms.Label()
 		Me.cmbStatus = New System.Windows.Forms.ComboBox()
 		Me.cmbSource = New System.Windows.Forms.ComboBox()
-		Me.dTPCulled = New System.Windows.Forms.DateTimePicker()
 		Me.cmbBreed = New System.Windows.Forms.ComboBox()
 		Me.dTPAcquired = New System.Windows.Forms.DateTimePicker()
 		Me.dTPBirth = New System.Windows.Forms.DateTimePicker()
@@ -56,7 +59,6 @@ Partial Class SowManagement
 		Me.label12 = New System.Windows.Forms.Label()
 		Me.label11 = New System.Windows.Forms.Label()
 		Me.label10 = New System.Windows.Forms.Label()
-		Me.textBox5 = New System.Windows.Forms.TextBox()
 		Me.label9 = New System.Windows.Forms.Label()
 		Me.label5 = New System.Windows.Forms.Label()
 		Me.label8 = New System.Windows.Forms.Label()
@@ -67,6 +69,8 @@ Partial Class SowManagement
 		Me.label7 = New System.Windows.Forms.Label()
 		Me.textBox9 = New System.Windows.Forms.TextBox()
 		Me.label13 = New System.Windows.Forms.Label()
+		Me.txtFather = New System.Windows.Forms.TextBox()
+		Me.label17 = New System.Windows.Forms.Label()
 		Me.label2 = New System.Windows.Forms.Label()
 		Me.label1 = New System.Windows.Forms.Label()
 		Me.label4 = New System.Windows.Forms.Label()
@@ -81,7 +85,7 @@ Partial Class SowManagement
 		'
 		'btnUpdate
 		'
-		Me.btnUpdate.Location = New System.Drawing.Point(47, 354)
+		Me.btnUpdate.Location = New System.Drawing.Point(47, 405)
 		Me.btnUpdate.Name = "btnUpdate"
 		Me.btnUpdate.Size = New System.Drawing.Size(93, 30)
 		Me.btnUpdate.TabIndex = 12
@@ -91,7 +95,7 @@ Partial Class SowManagement
 		'
 		'btnDelete
 		'
-		Me.btnDelete.Location = New System.Drawing.Point(100, 321)
+		Me.btnDelete.Location = New System.Drawing.Point(100, 372)
 		Me.btnDelete.Name = "btnDelete"
 		Me.btnDelete.Size = New System.Drawing.Size(93, 30)
 		Me.btnDelete.TabIndex = 11
@@ -118,7 +122,7 @@ Partial Class SowManagement
 		Me.panel3.Controls.Add(Me.label15)
 		Me.panel3.Location = New System.Drawing.Point(229, 112)
 		Me.panel3.Name = "panel3"
-		Me.panel3.Size = New System.Drawing.Size(619, 390)
+		Me.panel3.Size = New System.Drawing.Size(619, 438)
 		Me.panel3.TabIndex = 16
 		'
 		'btnSearch1
@@ -153,10 +157,10 @@ Partial Class SowManagement
 		Me.dataGridView1.AllowUserToAddRows = false
 		Me.dataGridView1.AllowUserToDeleteRows = false
 		Me.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-		Me.dataGridView1.Location = New System.Drawing.Point(3, 47)
+		Me.dataGridView1.Location = New System.Drawing.Point(3, 48)
 		Me.dataGridView1.Name = "dataGridView1"
 		Me.dataGridView1.ReadOnly = true
-		Me.dataGridView1.Size = New System.Drawing.Size(610, 337)
+		Me.dataGridView1.Size = New System.Drawing.Size(610, 383)
 		Me.dataGridView1.TabIndex = 0
 		AddHandler Me.dataGridView1.CellClick, AddressOf Me.DataGridView1CellClick
 		'
@@ -171,7 +175,7 @@ Partial Class SowManagement
 		'
 		'btnAdd
 		'
-		Me.btnAdd.Location = New System.Drawing.Point(4, 321)
+		Me.btnAdd.Location = New System.Drawing.Point(4, 372)
 		Me.btnAdd.Name = "btnAdd"
 		Me.btnAdd.Size = New System.Drawing.Size(93, 30)
 		Me.btnAdd.TabIndex = 10
@@ -183,9 +187,12 @@ Partial Class SowManagement
 		'
 		Me.panel2.BackColor = System.Drawing.Color.OldLace
 		Me.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+		Me.panel2.Controls.Add(Me.cmbType)
+		Me.panel2.Controls.Add(Me.txtKilos)
+		Me.panel2.Controls.Add(Me.txtMother)
+		Me.panel2.Controls.Add(Me.label16)
 		Me.panel2.Controls.Add(Me.cmbStatus)
 		Me.panel2.Controls.Add(Me.cmbSource)
-		Me.panel2.Controls.Add(Me.dTPCulled)
 		Me.panel2.Controls.Add(Me.cmbBreed)
 		Me.panel2.Controls.Add(Me.dTPAcquired)
 		Me.panel2.Controls.Add(Me.dTPBirth)
@@ -194,7 +201,6 @@ Partial Class SowManagement
 		Me.panel2.Controls.Add(Me.label12)
 		Me.panel2.Controls.Add(Me.label11)
 		Me.panel2.Controls.Add(Me.label10)
-		Me.panel2.Controls.Add(Me.textBox5)
 		Me.panel2.Controls.Add(Me.label9)
 		Me.panel2.Controls.Add(Me.label5)
 		Me.panel2.Controls.Add(Me.btnUpdate)
@@ -208,10 +214,45 @@ Partial Class SowManagement
 		Me.panel2.Controls.Add(Me.label7)
 		Me.panel2.Controls.Add(Me.textBox9)
 		Me.panel2.Controls.Add(Me.label13)
+		Me.panel2.Controls.Add(Me.txtFather)
+		Me.panel2.Controls.Add(Me.label17)
 		Me.panel2.Location = New System.Drawing.Point(7, 112)
 		Me.panel2.Name = "panel2"
-		Me.panel2.Size = New System.Drawing.Size(200, 390)
+		Me.panel2.Size = New System.Drawing.Size(200, 438)
 		Me.panel2.TabIndex = 15
+		'
+		'cmbType
+		'
+		Me.cmbType.FormattingEnabled = true
+		Me.cmbType.Items.AddRange(New Object() {"F1", "F2"})
+		Me.cmbType.Location = New System.Drawing.Point(79, 174)
+		Me.cmbType.Name = "cmbType"
+		Me.cmbType.Size = New System.Drawing.Size(112, 21)
+		Me.cmbType.TabIndex = 39
+		AddHandler Me.cmbType.KeyPress, AddressOf Me.CmbTypeKeyPress
+		'
+		'txtKilos
+		'
+		Me.txtKilos.Location = New System.Drawing.Point(79, 250)
+		Me.txtKilos.Name = "txtKilos"
+		Me.txtKilos.Size = New System.Drawing.Size(113, 20)
+		Me.txtKilos.TabIndex = 38
+		'
+		'txtMother
+		'
+		Me.txtMother.Location = New System.Drawing.Point(80, 299)
+		Me.txtMother.Name = "txtMother"
+		Me.txtMother.Size = New System.Drawing.Size(113, 20)
+		Me.txtMother.TabIndex = 34
+		'
+		'label16
+		'
+		Me.label16.Location = New System.Drawing.Point(-16, 297)
+		Me.label16.Name = "label16"
+		Me.label16.Size = New System.Drawing.Size(100, 23)
+		Me.label16.TabIndex = 35
+		Me.label16.Text = "Mother:"
+		Me.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'cmbStatus
 		'
@@ -220,6 +261,7 @@ Partial Class SowManagement
 		Me.cmbStatus.Name = "cmbStatus"
 		Me.cmbStatus.Size = New System.Drawing.Size(112, 21)
 		Me.cmbStatus.TabIndex = 33
+		AddHandler Me.cmbStatus.KeyPress, AddressOf Me.CmbStatusKeyPress
 		'
 		'cmbSource
 		'
@@ -228,14 +270,7 @@ Partial Class SowManagement
 		Me.cmbSource.Name = "cmbSource"
 		Me.cmbSource.Size = New System.Drawing.Size(112, 21)
 		Me.cmbSource.TabIndex = 32
-		'
-		'dTPCulled
-		'
-		Me.dTPCulled.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-		Me.dTPCulled.Location = New System.Drawing.Point(80, 250)
-		Me.dTPCulled.Name = "dTPCulled"
-		Me.dTPCulled.Size = New System.Drawing.Size(112, 20)
-		Me.dTPCulled.TabIndex = 31
+		AddHandler Me.cmbSource.KeyPress, AddressOf Me.CmbSourceKeyPress
 		'
 		'cmbBreed
 		'
@@ -244,6 +279,7 @@ Partial Class SowManagement
 		Me.cmbBreed.Name = "cmbBreed"
 		Me.cmbBreed.Size = New System.Drawing.Size(112, 21)
 		Me.cmbBreed.TabIndex = 30
+		AddHandler Me.cmbBreed.KeyPress, AddressOf Me.CmbBreedKeyPress
 		'
 		'dTPAcquired
 		'
@@ -263,14 +299,14 @@ Partial Class SowManagement
 		'
 		'textBox10
 		'
-		Me.textBox10.Location = New System.Drawing.Point(80, 299)
+		Me.textBox10.Location = New System.Drawing.Point(80, 347)
 		Me.textBox10.Name = "textBox10"
 		Me.textBox10.Size = New System.Drawing.Size(113, 20)
 		Me.textBox10.TabIndex = 26
 		'
 		'label14
 		'
-		Me.label14.Location = New System.Drawing.Point(-18, 297)
+		Me.label14.Location = New System.Drawing.Point(-18, 345)
 		Me.label14.Name = "label14"
 		Me.label14.Size = New System.Drawing.Size(100, 23)
 		Me.label14.TabIndex = 27
@@ -283,7 +319,7 @@ Partial Class SowManagement
 		Me.label12.Name = "label12"
 		Me.label12.Size = New System.Drawing.Size(100, 23)
 		Me.label12.TabIndex = 23
-		Me.label12.Text = "Date Culled"
+		Me.label12.Text = "No. of Kilos"
 		Me.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'label11
@@ -303,13 +339,6 @@ Partial Class SowManagement
 		Me.label10.TabIndex = 19
 		Me.label10.Text = "Source"
 		Me.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-		'
-		'textBox5
-		'
-		Me.textBox5.Location = New System.Drawing.Point(80, 173)
-		Me.textBox5.Name = "textBox5"
-		Me.textBox5.Size = New System.Drawing.Size(113, 20)
-		Me.textBox5.TabIndex = 16
 		'
 		'label9
 		'
@@ -397,6 +426,22 @@ Partial Class SowManagement
 		Me.label13.Text = "Owner"
 		Me.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
+		'txtFather
+		'
+		Me.txtFather.Location = New System.Drawing.Point(80, 323)
+		Me.txtFather.Name = "txtFather"
+		Me.txtFather.Size = New System.Drawing.Size(113, 20)
+		Me.txtFather.TabIndex = 36
+		'
+		'label17
+		'
+		Me.label17.Location = New System.Drawing.Point(-16, 321)
+		Me.label17.Name = "label17"
+		Me.label17.Size = New System.Drawing.Size(100, 23)
+		Me.label17.TabIndex = 37
+		Me.label17.Text = "Father:"
+		Me.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+		'
 		'label2
 		'
 		Me.label2.Font = New System.Drawing.Font("MS Reference Sans Serif", 24!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
@@ -456,7 +501,7 @@ Partial Class SowManagement
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.SystemColors.ButtonHighlight
-		Me.ClientSize = New System.Drawing.Size(860, 505)
+		Me.ClientSize = New System.Drawing.Size(860, 555)
 		Me.Controls.Add(Me.panel3)
 		Me.Controls.Add(Me.panel2)
 		Me.Controls.Add(Me.pictureBox1)
@@ -475,9 +520,14 @@ Partial Class SowManagement
 		CType(Me.pictureBox1,System.ComponentModel.ISupportInitialize).EndInit
 		Me.ResumeLayout(false)
 	End Sub
+	Private cmbType As System.Windows.Forms.ComboBox
+	Private txtKilos As System.Windows.Forms.TextBox
+	Private label17 As System.Windows.Forms.Label
+	Private txtFather As System.Windows.Forms.TextBox
+	Private label16 As System.Windows.Forms.Label
+	Private txtMother As System.Windows.Forms.TextBox
 	Private cmbSource As System.Windows.Forms.ComboBox
 	Private cmbStatus As System.Windows.Forms.ComboBox
-	Private dTPCulled As System.Windows.Forms.DateTimePicker
 	Private cmbBreed As System.Windows.Forms.ComboBox
 	Private dTPBirth As System.Windows.Forms.DateTimePicker
 	Private dTPAcquired As System.Windows.Forms.DateTimePicker
@@ -495,7 +545,6 @@ Partial Class SowManagement
 	Private label10 As System.Windows.Forms.Label
 	Private label5 As System.Windows.Forms.Label
 	Private label9 As System.Windows.Forms.Label
-	Private textBox5 As System.Windows.Forms.TextBox
 	Private pictureBox1 As System.Windows.Forms.PictureBox
 	Private panel1 As System.Windows.Forms.Panel
 	Private label4 As System.Windows.Forms.Label

@@ -111,6 +111,7 @@ Partial Class MyProfile
 		'
 		'pictureBox1
 		'
+		Me.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.pictureBox1.Image = CType(resources.GetObject("pictureBox1.Image"),System.Drawing.Image)
 		Me.pictureBox1.Location = New System.Drawing.Point(11, 9)
 		Me.pictureBox1.Name = "pictureBox1"
@@ -122,6 +123,7 @@ Partial Class MyProfile
 		'panel1
 		'
 		Me.panel1.BackColor = System.Drawing.Color.OldLace
+		Me.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.panel1.Controls.Add(Me.label5)
 		Me.panel1.Controls.Add(Me.lblProfileUser)
 		Me.panel1.Controls.Add(Me.label4)
@@ -167,6 +169,7 @@ Partial Class MyProfile
 		'panel2
 		'
 		Me.panel2.BackColor = System.Drawing.Color.OldLace
+		Me.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.panel2.Controls.Add(Me.label1)
 		Me.panel2.Controls.Add(Me.btnUpdate)
 		Me.panel2.Location = New System.Drawing.Point(9, 115)

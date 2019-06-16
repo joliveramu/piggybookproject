@@ -71,6 +71,7 @@ Partial Class SowHistory
 		Me.button2.TabIndex = 16
 		Me.button2.Text = "View Report"
 		Me.button2.UseVisualStyleBackColor = true
+		Me.button2.Visible = false
 		AddHandler Me.button2.Click, AddressOf Me.Button2Click
 		'
 		'panel3

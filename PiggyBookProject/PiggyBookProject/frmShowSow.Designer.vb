@@ -64,6 +64,7 @@ Partial Class frmShowSow
 		Me.txtBorn = New System.Windows.Forms.TextBox()
 		Me.label3 = New System.Windows.Forms.Label()
 		Me.label2 = New System.Windows.Forms.Label()
+		Me.lblCurrentUser = New System.Windows.Forms.Label()
 		CType(Me.dataGridView1,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.panel2.SuspendLayout
 		CType(Me.pictureBox1,System.ComponentModel.ISupportInitialize).BeginInit
@@ -358,12 +359,22 @@ Partial Class frmShowSow
 		Me.label2.TabIndex = 0
 		Me.label2.Text = "Date Caste"
 		'
+		'lblCurrentUser
+		'
+		Me.lblCurrentUser.Location = New System.Drawing.Point(145, 4)
+		Me.lblCurrentUser.Name = "lblCurrentUser"
+		Me.lblCurrentUser.Size = New System.Drawing.Size(100, 23)
+		Me.lblCurrentUser.TabIndex = 9
+		Me.lblCurrentUser.Text = "label12"
+		Me.lblCurrentUser.Visible = false
+		'
 		'frmShowSow
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.SystemColors.ButtonHighlight
 		Me.ClientSize = New System.Drawing.Size(893, 453)
+		Me.Controls.Add(Me.lblCurrentUser)
 		Me.Controls.Add(Me.panel3)
 		Me.Controls.Add(Me.btnClose)
 		Me.Controls.Add(Me.textID)
@@ -384,6 +395,7 @@ Partial Class frmShowSow
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Public lblCurrentUser As System.Windows.Forms.Label
 	Private cmbBoarID As System.Windows.Forms.ComboBox
 	Private button1 As System.Windows.Forms.Button
 	Private cmbNatai As System.Windows.Forms.ComboBox

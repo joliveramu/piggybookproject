@@ -112,7 +112,7 @@ Partial Class MainMenu
 		Me.btnLogout.Font = New System.Drawing.Font("Arial", 12!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.btnLogout.ForeColor = System.Drawing.Color.DarkRed
 		Me.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnLogout.Location = New System.Drawing.Point(260, 343)
+		Me.btnLogout.Location = New System.Drawing.Point(145, 337)
 		Me.btnLogout.Name = "btnLogout"
 		Me.btnLogout.Size = New System.Drawing.Size(190, 91)
 		Me.btnLogout.TabIndex = 3
@@ -154,6 +154,7 @@ Partial Class MainMenu
 		Me.btnFattenerManagement.Text = "Fattener Management"
 		Me.btnFattenerManagement.TextAlign = System.Drawing.ContentAlignment.BottomCenter
 		Me.btnFattenerManagement.UseVisualStyleBackColor = false
+		Me.btnFattenerManagement.Visible = false
 		AddHandler Me.btnFattenerManagement.Click, AddressOf Me.BtnFattenerManagementClick
 		'
 		'pictureBox1
@@ -199,7 +200,7 @@ Partial Class MainMenu
 		Me.btnSowHistory.Font = New System.Drawing.Font("Arial", 12!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
 		Me.btnSowHistory.ForeColor = System.Drawing.Color.DarkRed
 		Me.btnSowHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnSowHistory.Location = New System.Drawing.Point(33, 343)
+		Me.btnSowHistory.Location = New System.Drawing.Point(33, 240)
 		Me.btnSowHistory.Name = "btnSowHistory"
 		Me.btnSowHistory.Size = New System.Drawing.Size(190, 91)
 		Me.btnSowHistory.TabIndex = 13
