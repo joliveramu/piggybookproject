@@ -1,7 +1,6 @@
 C:\Users\John Oliver Amurao\Documents\SharpDevelop Projects\PiggyBookProject\PiggyBookProject\bin\Debug\PiggyBookProject.exe.config
 C:\Users\John Oliver Amurao\Documents\SharpDevelop Projects\PiggyBookProject\PiggyBookProject\bin\Debug\PiggyBookProject.exe
 C:\Users\John Oliver Amurao\Documents\SharpDevelop Projects\PiggyBookProject\PiggyBookProject\bin\Debug\PiggyBookProject.pdb
-C:\Users\John Oliver Amurao\Documents\SharpDevelop Projects\PiggyBookProject\PiggyBookProject\obj\Debug\PiggyBookProject.vbprojResolveAssemblyReference.cache
 C:\Users\John Oliver Amurao\Documents\SharpDevelop Projects\PiggyBookProject\PiggyBookProject\obj\Debug\PiggyBookProject.BoarManagement.resources
 C:\Users\John Oliver Amurao\Documents\SharpDevelop Projects\PiggyBookProject\PiggyBookProject\obj\Debug\PiggyBookProject.FattenerManagement.resources
 C:\Users\John Oliver Amurao\Documents\SharpDevelop Projects\PiggyBookProject\PiggyBookProject\obj\Debug\PiggyBookProject.frmShowSow.resources

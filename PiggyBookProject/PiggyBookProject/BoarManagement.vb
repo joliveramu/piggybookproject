@@ -229,6 +229,7 @@ Public Partial Class BoarManagement
 	Sub Button1Click(sender As Object, e As EventArgs)
 		loadData()
 		clearFields()
+		
 	End Sub
 	
 	

@@ -38,10 +38,18 @@ Public Partial Class SowManagement
 		Try
 			db.connection.Open()
 			db.query = "select * from sowlist"
-			Dim adapter As New OleDbDataAdapter(db.query, db.connection)
+			db.command = New OleDbCommand(db.query,db.connection)
+			db.reader = db.command.ExecuteReader()
+			
+			If db.reader.HasRows() Then
+			'Dim adapter As New OleDbDataAdapter(db.query, db.connection)
 			Dim dt As New DataTable
-			adapter.Fill(dt)
-			dataGridView1.DataSource = dt
+			dt.Load(db.reader)
+			'adapter.Fill(dt)
+			dataGridView1.DataSource = dt	
+			End If
+				
+			
 			db.connection.Close()
 		Catch ex As Exception
 			MessageBox.Show(ex.Message)
@@ -211,7 +219,7 @@ Public Partial Class SowManagement
 			db.command.Parameters.AddWithValue("@kilos", txtKilos.Text)
 			db.command.Parameters.AddWithValue("@owner",textBox9.Text)
 			db.command.Parameters.AddWithValue("@remarks",textBox10.Text)
-			db.command.Parameters.AddWithValue("@",txtMother.Text)
+			db.command.Parameters.AddWithValue("@mother",txtMother.Text)
 			db.command.Parameters.AddWithValue("@father",txtFather.Text)			
 			db.command.Parameters.AddWithValue("@id",lblSowID.Text)
 			db.command.ExecuteNonQuery()
@@ -232,6 +240,7 @@ Public Partial Class SowManagement
 	Sub Button1Click(sender As Object, e As EventArgs)
 		loadData()
 		textBox11.Clear()
+		clearFields()
 	End Sub
 	
 	Sub BtnSearch1Click(sender As Object, e As EventArgs)
@@ -252,6 +261,10 @@ Public Partial Class SowManagement
 				dataGridView1.DataSource = dt
 			Else
 				MessageBox.Show("We cannot find that")
+				db.connection.Close()
+				clearFields()
+				loadData()
+				
 			End If
 				
 			db.connection.Close()
