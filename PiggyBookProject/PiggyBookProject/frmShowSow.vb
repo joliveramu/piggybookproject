@@ -33,7 +33,7 @@ Public Partial Class frmShowSow
 			Dim sHistory As New SowHistory
 			db.connection.Open()
 			'db.query = "Select sowlist.*, sowhistory.* from sowlist inner join sowhistory on sowhistory.pigcode = sowlist.pigcode where sowhistory.pigcode = " & Integer.Parse(Me.textID.Text) 
-			db.query = "select status, idsowhistory, datecaste, born, liveborn, mummified, stillborn, idboar, pigletbirthdate, deaths, datewean, natai from sowlist inner join sowhistory on sowhistory.pigcode = sowlist.pigcode where sowhistory.pigcode = " & Integer.Parse(Me.textID.Text)
+			db.query = "select status, datecaste, born, liveborn, mummified, stillborn, idboar, pigletbirthdate, deaths, datewean, natai from sowlist inner join sowhistory on sowhistory.pigcode = sowlist.pigcode where sowhistory.pigcode = " & Integer.Parse(Me.textID.Text)
 			Dim adapter As New OleDbDataAdapter(db.query, db.connection)
 			Dim dt As New DataTable
 			adapter.Fill(dt)
